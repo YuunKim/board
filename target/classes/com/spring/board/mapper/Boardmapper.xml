@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.board.mapper.boardMapper">
+
+	<!-- bno(번호) 값을 알 필요 없는 경우 -->
+	<insert id="insert">
+		insert into tbl_board (bno, title, content, writer)
+		values (seq_board.nextval, #{title}, #{content}, #{writer})
+	</insert>
+
+	<!-- bno(번호) 값을 알아야 하는 경우 -->
+	<insert id="insertSelectKey">
+		<selectKey order="BEFORE" keyProperty="bno" resultType="long">
+			select seq_board.nextval from dual
+		</selectKey>
+
+		insert into tbl_board (bno, title, content, writer)
+		values (#{bno}, #{title}, #{content}, #{writer})
+
+	</insert>
+</mapper>
