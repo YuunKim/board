@@ -20,4 +20,8 @@
 		values (#{bno}, #{title}, #{content}, #{writer})
 
 	</insert>
+	
+	<select id="read" resultType="com.spring.board.domain.BoardVO">
+		select * from tbl_board where bno = #{bno}
+	</select>
 </mapper>

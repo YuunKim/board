@@ -13,6 +13,9 @@ public interface boardMapper { // CRUD쿼리 메서드 리스트
 	public void insertSelectKey(BoardVO board);
 	
 	// - tbl_board테이블안의 데이터 한 건 조회 = R
+	// "매개변수"로 게시글 번호를 넘겨주면(요청한 데이터를 찾아야 하니깐)
+	//  -> 한 건의 데이터를 리턴해주는 메서드
+	public BoardVO read(Long bno);
 	
 	// - tbl_board테이블안의 모든 데이터 조회 = R
 	
